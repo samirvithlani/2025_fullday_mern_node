@@ -1,14 +1,12 @@
-// console.log("Hello")
-// var x = 100
-// console.log("value of x = ",x)
+const express = require("express") //express module name
+//create an object of express
+const app = express()
 
-console.log("app.js")
-const user = require("./users")
-const employees = require("./employees")
-console.log("user = ",user)
-console.log(user.userName)
-console.log(user.userAge)
 
-console.log("employees =",employees)
-var greet = employees.setUser(12,"raj")
-console.log(greet)
+
+
+const PORT = 3001
+//server creation
+app.listen(PORT,()=>{
+    console.log(`server started on port ${PORT}`)
+})

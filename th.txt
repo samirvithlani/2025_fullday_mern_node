@@ -1,0 +1,104 @@
+// console.log("Hello")
+// var x = 100
+// console.log("value of x = ",x)
+
+console.log("app.js")
+const user = require("./users")
+const employees = require("./employees")
+console.log("user = ",user)
+console.log(user.userName)
+console.log(user.userAge)
+
+console.log("employees =",employees)
+var greet = employees.setUser(12,"raj")
+console.log(greet)
+
+
+
+
+
+
+
+node js
+
+n tire
+
+react js --> db connection  -->API consume
+
+api consumer:
+api producer:
+java
+spring boot
+python:
+Django
+fast flask
+js:
+node -->
+
+MERN:
+express node
+
+js -->client
+node js ---> js server side
+
+express:
+
+api  : produce
+
+express framework: -- node js
+
+import export
+
+d:
+   projects
+	mern
+	 backend
+ 	   ctrl+l
+
+npm init --y
+
+
+code .
+
+
+npm -->node_modules
+
+
+web application:
+req,res
+manage: --> server -->applicaiton hold
+
+web server | app server : containers : req --> res
+
+java --> tomcat
+python --> no ext
+php --> xamp
+node --> no ext
+
+embeded server
+
+node : server
+
+http module
+express module
+
+npm i express
+
+devtools
+npm i nodemon -g
+
+
+npm i nodemon --dev
+
+
+
+package.json
+
+"abc":"jknlksa" --> manul -->node_module
+
+npm install
+
+ -->package.json -->depe scan node_modules
+
+
+
