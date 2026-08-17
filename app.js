@@ -4,8 +4,13 @@ const app = express()
 
 
 
+//require
 
-const PORT = 3001
+//localhost:3000/user/users
+const userRoutes = require("./src/routes/UserRoutes")
+app.use("/user",userRoutes)
+
+const PORT = 3000
 //server creation
 app.listen(PORT,()=>{
     console.log(`server started on port ${PORT}`)

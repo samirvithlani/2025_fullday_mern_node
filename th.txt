@@ -1,3 +1,62 @@
+//localhost:3000/test
+//endpoint
+//req -->request ??? 
+//res -->response
+app.get("/test",(req,res)=>{
+
+    console.log("test api called...")
+    res.send("test api called..") //string
+})
+
+//localhost:3000/user
+app.get("/user",(req,res)=>{
+
+    res.json({id:1,name:"amit"})
+})
+
+var users = [
+    {id:1,name:"jay",age:23},
+    {id:2,name:"raj",age:25},
+    {id:3,name:"parth",age:24},
+    {id:4,name:"akshit",age:22}
+]
+
+app.get("/users",(req,res)=>{
+    res.json({message:"data fetched",data:users})
+})
+
+
+//html response..
+app.get("/test2",(req,res)=>{
+    res.set("content-type","text/html")
+    res.send("<h1>HELLO</h1>")
+})
+
+
+app.get("/usertable",(req,res)=>{
+    //mime type
+    res.set("content-type","text/html")
+    res.send(`<table border="1">
+                <tr>
+                    <th>id</th>
+                    <th>name</th>
+                    <th>age</th>
+                </tr>
+                ${users.map((u)=>`
+                    <tr>
+                        <td>${u.id}</td>
+                        <td>${u.name}</td>
+                        <td>${u.age}</td>
+                    </tr>`
+                ).join("")} 
+              
+        `)
+})
+
+
+
+
+
 // console.log("Hello")
 // var x = 100
 // console.log("value of x = ",x)
@@ -100,5 +159,39 @@ npm install
 
  -->package.json -->depe scan node_modules
 
+API: applicaiton programming interface
+
+api : use ?????
+
+url ---> request method
+GET,POST,PUT,DELETE
+
+GET:
+POST:
+PUT:update...
+DELETE:
 
 
+browser urlbar only support get request
+
+
+
+src:
+ controllers : business logic api logic
+ models : db layer 
+ utils : 
+ routes : end poits 
+app.js 
+
+
+app.get("/user") ---> routes
+app.get("/user",) -(req,res)=>{} ---> controller
+
+app --> routes --> controller[models] -->response
+employeeController
+employeeRoutes
+employeemodel
+
+rolecontroller
+rolemodel
+roleroutes
