@@ -1,6 +1,12 @@
-const getAllUsers = (req,res)=>{
+//usermodel require
+const userModel = require("../models/UserModel")
+//db.users
 
-    res.json({message:"get all users.."})
+const getAllUsers = async(req,res)=>{
+
+    //db.users.find()
+    const users = await userModel.find()
+    res.json({message:"get all users..",data:users})
 }
 const getUserById = (req,res)=>{
     console.log("params",req.params) //{id:""}
