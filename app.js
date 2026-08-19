@@ -1,6 +1,8 @@
 const express = require("express") //express module name
 //create an object of express
 const app = express()
+const getDBConnection =  require("./src/utils/DBConnection")
+getDBConnection()
 
 
 
