@@ -8,12 +8,37 @@ const getAllUsers = async(req,res)=>{
     const users = await userModel.find()
     res.json({message:"get all users..",data:users})
 }
-const getUserById = (req,res)=>{
-    console.log("params",req.params) //{id:""}
-    console.log(req.params.id)
-    res.json({message:"get user by id called...",id:req.params.id})
+const getUserById = async(req,res)=>{
+    //req.params
+    const id = req.params.id;
+
+    //const foundUser = await userModel.find({_id:id})
+    //const foundUser = await userModel.findOne({_id:id})
+    const foundUser = await userModel.findById(id)
+    if(foundUser){
+       res.json({
+            message:"user found",
+            data:foundUser
+        })
+    }
+    else{
+        res.json({
+            message:"user not found",
+        })
+    }
+
 }
 
+//req.query
+
+const searchUser = async(req,res)=>{
+
+    const data = req.query; //{josn object}
+    console.log(data)
+    res.json({data:data})
+}
+
+
 module.exports ={
-    getAllUsers,getUserById
+    getAllUsers,getUserById,searchUser
 }
