@@ -9,6 +9,16 @@ const userModel = new Schema({
     },
     age:{
         type:Number
+    },
+    bloodGroup:{
+        type:String,
+        enum:["A+","B+","AB+","A-"]
+    },
+    skills:[{
+        type:String
+    }],
+    address:{
+        type:Object
     }
 })
 
