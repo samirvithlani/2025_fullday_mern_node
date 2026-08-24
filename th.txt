@@ -214,3 +214,15 @@ userModel.inserOne(req.body)
 mongodb,
 mongoose: orm
 
+
+roleModel:
+  name:
+  status:Boolean
+rolecontroller
+    createRole:POST
+    getAllRoles:GET
+roleRoutes
+
+
+
+app.js -->require
