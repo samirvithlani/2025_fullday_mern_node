@@ -4,6 +4,9 @@ const app = express()
 const getDBConnection =  require("./src/utils/DBConnection")
 getDBConnection()
 
+//glob middleware
+app.use(express.json()) //--> () ==> dont forget
+
 
 
 //require
