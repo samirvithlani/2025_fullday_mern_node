@@ -1,5 +1,6 @@
 //usermodel require
 const userModel = require("../models/UserModel");
+const mailSend = require("../utils/MailUtils")
 //db.users
 
 const getAllUsers = async (req, res) => {
@@ -48,6 +49,7 @@ const searchUser = async (req, res) => {
 const createUser = async (req, res) => {
   try {
     const savedUser = await userModel.insertOne(req.body);
+    //mailSend(req.body.email,"","")
     res.json({
       message: "user saved!!",
       data: savedUser,

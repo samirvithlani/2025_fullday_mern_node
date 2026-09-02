@@ -47,6 +47,32 @@ const getAllProducts = async(req,res)=>{
 
 }
 
+const updateStockStatus = async(req,res)=>{
+
+    try{
+
+        
+        const update2 = await productModel.updateMany({stock:{$gte:10}},{$set:{stockStatus:"available"}})
+        const update3 = await productModel.updateMany({stock:{$lt:10}},{$set:{stockStatus:"low"}})
+        const update1 = await productModel.updateMany({stock:0},{$set:{stockStatus:"out of stock"}})
+
+        res.status(200).json({
+            message:"stock status updated..",
+        })    
+
+
+    }catch(err){
+
+        res.status(500).json({
+            message:"error while updating stock"
+        })
+
+    }
+
+
+}
+
 module.exports = {
-    createProduct,getAllProducts
+    createProduct,getAllProducts,
+    updateStockStatus
 }

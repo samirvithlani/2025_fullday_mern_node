@@ -226,3 +226,21 @@ roleRoutes
 
 
 app.js -->require
+
+
+
+updateStockStatus function
+
+  stock==0 --status update --out of stock
+  stock<=10 status update low stock
+  stock>=10 available
+
+
+nodemailer
+gmail
+ -->2 step veri..
+
+.env:
+
+
+npm i dotenv
