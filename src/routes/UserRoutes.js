@@ -1,5 +1,6 @@
 const router = require("express").Router()
 const userController = require("../controllers/UserController")
+const testMiddleware = require("../middlewares/TestMiddleware")
 // router.get("/users",(req,res)=>{
 
 // })
@@ -11,7 +12,8 @@ router.get("/searchuser",userController.searchUser)
 router.delete("/user/:id",userController.deleteUser)
 
 //localhost:3000/user/user
-router.post("/user",userController.createUser)
+//router.post("/user",testMiddleware,userController.createUser)
+router.post("/user",testMiddleware("MANAGER"),userController.createUser)
 router.put("/user/:id",userController.updateUser)
 // router.put("/updatebyage/:age",userController.updateByAge)
 module.exports = router
