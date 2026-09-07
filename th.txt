@@ -244,3 +244,5 @@ gmail
 npm i dotenv
 
 middleware:
+
+npm i zod
