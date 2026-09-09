@@ -244,5 +244,17 @@ gmail
 npm i dotenv
 
 middleware:
-
 npm i zod
+
+
+file:
+
+server : 
+database :
+cloud :
+user register: ---> file  -->server / cloud --> path --> other data --db
+
+npm i multer
+
+
+

@@ -28,6 +28,9 @@ const userModel = new Schema({
     password:{
         type:String,
         required:true
+    },
+    profilepicUrl:{
+        type:String
     }
 })
 
