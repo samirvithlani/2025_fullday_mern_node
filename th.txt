@@ -256,5 +256,28 @@ user register: ---> file  -->server / cloud --> path --> other data --db
 
 npm i multer
 
+upload multipule images:
+
+
+//createUser api -->controller --> comment ->copy
+remove single upload logic
+
+console.log("req file..",req.files)
+
+router.post("/user",upload.array("file",3),userController.createUser)
+
+middleware no chnge
+
+
+userMode:
+profileThumnails:[
+    {
+        type:String
+    }
+]
+
+hint: map
+
+
 
 

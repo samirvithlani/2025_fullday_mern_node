@@ -46,6 +46,21 @@ const searchUser = async (req, res) => {
 //     res.json({message:"user created",data:savedUser})
 // }
 
+// const createUser = async (req, res) => {
+//   try {
+//     console.log("req file..",req.file) //meta data
+//     // const savedUser = await userModel.insertOne(req.body);
+//     const savedUser = await userModel.insertOne({...req.body,profilepicUrl:req.file.path});
+//     //mailSend(req.body.email,"","")
+//     res.json({
+//       message: "user saved!!",
+//       data: savedUser,
+//     });
+//   } catch (err) {
+//     res.json({ err: err });
+//   }
+// };
+
 const createUser = async (req, res) => {
   try {
     console.log("req file..",req.file) //meta data
