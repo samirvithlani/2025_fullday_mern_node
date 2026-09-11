@@ -1,6 +1,7 @@
 //usermodel require
 const userModel = require("../models/UserModel");
 const mailSend = require("../utils/MailUtils")
+const uploadtoCloud = require("../utils/CloudinaryUpload")
 //db.users
 
 const getAllUsers = async (req, res) => {
@@ -65,7 +66,12 @@ const createUser = async (req, res) => {
   try {
     console.log("req file..",req.file) //meta data
     // const savedUser = await userModel.insertOne(req.body);
-    const savedUser = await userModel.insertOne({...req.body,profilepicUrl:req.file.path});
+    //cloud..
+    const cloundinaryresponse = await uploadtoCloud(req.file.path)
+    console.log("cloudinary response..",cloundinaryresponse)
+
+    //const savedUser = await userModel.insertOne({...req.body,profilepicUrl:req.file.path});
+    const savedUser = await userModel.insertOne({...req.body,profilepicUrl:cloundinaryresponse.secure_url});
     //mailSend(req.body.email,"","")
     res.json({
       message: "user saved!!",
