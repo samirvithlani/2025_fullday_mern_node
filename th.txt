@@ -280,4 +280,14 @@ hint: map
 
 
 
+userController ---> 
+api --> createMultipuleUsers
+
+multer ---> file upload excell
+
+package explore --> xlsx
+
+name email age:
+read -->controller  -->clg  -->json
+res --> ok
 

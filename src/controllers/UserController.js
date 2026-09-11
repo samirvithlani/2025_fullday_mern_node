@@ -1,7 +1,8 @@
 //usermodel require
 const userModel = require("../models/UserModel");
-const mailSend = require("../utils/MailUtils")
-const uploadtoCloud = require("../utils/CloudinaryUpload")
+const mailSend = require("../utils/MailUtils");
+const uploadtoCloud = require("../utils/CloudinaryUpload");
+const { file } = require("zod");
 //db.users
 
 const getAllUsers = async (req, res) => {
@@ -62,21 +63,42 @@ const searchUser = async (req, res) => {
 //   }
 // };
 
+// const createUser = async (req, res) => {
+//   try {
+//     console.log("req file..",req.file) //meta data
+//     // const savedUser = await userModel.insertOne(req.body);
+//     //cloud..
+//     const cloundinaryresponse = await uploadtoCloud(req.file.path)
+//     console.log("cloudinary response..",cloundinaryresponse)
+
+//     //const savedUser = await userModel.insertOne({...req.body,profilepicUrl:req.file.path});
+//     const savedUser = await userModel.insertOne({...req.body,profilepicUrl:cloundinaryresponse.secure_url});
+//     //mailSend(req.body.email,"","")
+//     res.json({
+//       message: "user saved!!",
+//       data: savedUser,
+//     });
+//   } catch (err) {
+//     res.json({ err: err });
+//   }
+// };
+
 const createUser = async (req, res) => {
   try {
-    console.log("req file..",req.file) //meta data
-    // const savedUser = await userModel.insertOne(req.body);
-    //cloud..
-    const cloundinaryresponse = await uploadtoCloud(req.file.path)
-    console.log("cloudinary response..",cloundinaryresponse)
+    // console.log("Req body",req.body)
+    console.log("req file..", req.files);
 
-    //const savedUser = await userModel.insertOne({...req.body,profilepicUrl:req.file.path});
-    const savedUser = await userModel.insertOne({...req.body,profilepicUrl:cloundinaryresponse.secure_url});
-    //mailSend(req.body.email,"","")
-    res.json({
-      message: "user saved!!",
-      data: savedUser,
-    });
+    // const u = req.files.map((file) => uploadtoCloud(req.file.path));
+    const u = await Promise.all(
+      req.files.map((file) => uploadtoCloud(file.path)),
+    );
+    //console.log("u....",u[0].secure_url);
+    const urls = u.map((url)=>url.secure_url)
+    console.log("urls...",urls)
+
+    //const savedUser = await userModel.insertOne({...req.body,profilepicUrl:u[0].path,ProfileThumb:u});
+    //await mailSend(req.body.email, "Testing royal", "hi someone from me");
+    res.json({ message: "Data fetch from postman" });
   } catch (err) {
     res.json({ err: err });
   }
@@ -110,7 +132,9 @@ const updateUser = async (req, res) => {
     const id = req.params.id;
     //const data = req.body;
 
-    const updatedUser = await userModel.findByIdAndUpdate(id, req.body,{new:true});
+    const updatedUser = await userModel.findByIdAndUpdate(id, req.body, {
+      new: true,
+    });
     if (updatedUser) {
       res.status(200).json({
         message: "user updated",
@@ -127,6 +151,14 @@ const updateUser = async (req, res) => {
     });
   }
 };
+const createMultipuleusers = async(req,res)=>{
+
+
+
+
+  res.json({message:"ok"})
+
+}
 
 module.exports = {
   getAllUsers,
@@ -134,5 +166,6 @@ module.exports = {
   searchUser,
   createUser,
   deleteUser,
-  updateUser
+  updateUser,
+  createMultipuleusers
 };
