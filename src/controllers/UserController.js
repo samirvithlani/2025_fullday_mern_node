@@ -2,6 +2,7 @@
 const userModel = require("../models/UserModel");
 const mailSend = require("../utils/MailUtils");
 const uploadtoCloud = require("../utils/CloudinaryUpload");
+const bcrypt = require("bcrypt")
 const { file } = require("zod");
 //db.users
 
@@ -96,10 +97,17 @@ const createUser = async (req, res) => {
     const urls = u.map((url)=>url.secure_url)
     console.log("urls...",urls)
 
-    //const savedUser = await userModel.insertOne({...req.body,profilepicUrl:u[0].path,ProfileThumb:u});
+    const hashedPassword = bcrypt.hashSync(req.body.password,10)
+
+    const savedUser = await userModel.insertOne({...req.body,profilepicUrl:u[0].path,ProfileThumb:u,password:hashedPassword});
+    
     //await mailSend(req.body.email, "Testing royal", "hi someone from me");
-    res.json({ message: "Data fetch from postman" });
+    res.json({
+      message:"user saved",
+      data:savedUser
+    })
   } catch (err) {
+    console.log(err)
     res.json({ err: err });
   }
 };

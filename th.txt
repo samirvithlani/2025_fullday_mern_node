@@ -291,3 +291,30 @@ name email age:
 read -->controller  -->clg  -->json
 res --> ok
 
+
+
+
+userController : function: LoginUser : POST
+req.body.email,req.body.password 
+
+userFetch:
+cosnt foundUserFromemail = await userModel.findOne({email:req.body.email})
+if(foundUserFromemail){
+
+    if(bcrypt.compareSync(req.body.password,foundUserFromemail.password)){
+        login success
+    }
+    else{
+        logiin faild
+    }
+
+
+}
+
+
+
+
+
+
+
+
