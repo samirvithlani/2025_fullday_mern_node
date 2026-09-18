@@ -4,13 +4,14 @@ const testMiddleware = require("../middlewares/TestMiddleware")
 const zodMiddleware = require("../middlewares/ZodMiddleware")
 const userValidationSchema = require("../validationschemas/UserValidationSchema")
 const upload = require("../middlewares/UploadMiddleware")
+const authMiddleware = require("../middlewares/AuthMiddleware")
 
 // router.get("/users",(req,res)=>{
 
 // })
 
 //loclhost:3000/users
-router.get("/users",userController.getAllUsers)
+router.get("/users",authMiddleware,userController.getAllUsers)
 router.get("/user/:id",userController.getUserById)
 router.get("/searchuser",userController.searchUser)
 router.delete("/user/:id",userController.deleteUser)
