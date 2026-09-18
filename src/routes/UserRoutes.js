@@ -24,4 +24,5 @@ router.post("/user",upload.array("file",5),userController.createUser)
 router.put("/user/:id",userController.updateUser)
 router.post("/multiuser",upload.single("file"),userController.createMultipuleusers)
 // router.put("/updatebyage/:age",userController.updateByAge)
+router.post("/loginuser",userController.loginUser)
 module.exports = router

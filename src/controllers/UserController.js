@@ -3,7 +3,10 @@ const userModel = require("../models/UserModel");
 const mailSend = require("../utils/MailUtils");
 const uploadtoCloud = require("../utils/CloudinaryUpload");
 const bcrypt = require("bcrypt")
-const { file } = require("zod");
+const jwt  = require("jsonwebtoken")
+const secret = "royal"
+
+
 //db.users
 
 const getAllUsers = async (req, res) => {
@@ -161,12 +164,43 @@ const updateUser = async (req, res) => {
 };
 const createMultipuleusers = async(req,res)=>{
 
-
-
-
   res.json({message:"ok"})
 
 }
+
+
+const loginUser = async(req,res)=>{
+
+    const foundUserFromEmail = await userModel.findOne({email:req.body.email})
+    if(foundUserFromEmail){
+
+        if(bcrypt.compareSync(req.body.password,foundUserFromEmail.password)){
+
+          //token generation..
+          const token = jwt.sign(foundUserFromEmail.toObject(),secret)
+
+
+            res.status(200).json({
+              message:"user login success",
+              data:token
+            })
+        }
+        else{
+          res.status(401).json({
+            message:"invalid credentials."
+          })
+        }
+
+    }
+    else{
+      res.status(404).json({
+        message:"user not found"
+      })
+    }
+
+
+}
+
 
 module.exports = {
   getAllUsers,
@@ -175,5 +209,6 @@ module.exports = {
   createUser,
   deleteUser,
   updateUser,
-  createMultipuleusers
+  createMultipuleusers,
+  loginUser
 };

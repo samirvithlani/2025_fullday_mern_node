@@ -312,6 +312,24 @@ if(foundUserFromemail){
 }
 
 
+if api is not public:
+authenticated users: --> call
+if user can login - that user is authenticated user:
+
+
+rs -->pass --> to enter in pp
+
+jwt token: --> loggedin user
+
+
+everytime we call secure api --> token passs -> backend token --->
+if token  token valid ---> api call !!
+
+npm i jsonwebtoken
+
+
+
+
 
 
 
