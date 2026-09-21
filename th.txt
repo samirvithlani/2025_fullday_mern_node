@@ -328,6 +328,9 @@ if token  token valid ---> api call !!
 npm i jsonwebtoken
 
 
+long lived token : refresh token : 6 month
+short lived token : access token : 2 
+
 
 
 
