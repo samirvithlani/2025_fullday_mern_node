@@ -1,7 +1,8 @@
 const jwt = require("jsonwebtoken")
 const secret = "royal"
+const userModel = require("../models/UserModel")
 
-const authMiddleware =(req,res,next)=>{
+const authMiddleware =async(req,res,next)=>{
 
       //req.headers
       //eg: Bearer jbsakhasiumahsumhashsiuhissauiasnius
@@ -16,10 +17,21 @@ const authMiddleware =(req,res,next)=>{
             //now verify token with jwt
             try{
 
-                jwt.verify(token,secret)
+                const decoded = jwt.verify(token,secret)
+                console.log("decoded object ",decoded)
+                const verifiedUser = await userModel.findById(decoded.id)
+                if(verifiedUser){
+                    next()
+                }
+                else{
+                    res.status(401).json({
+                        message:"not valid user"
+                    })
+                }
+
                 //if token can not verify it will throw exception and go to catch block
                 //if token can  verify will send to next
-                next() // it will go to controller
+                //next() // it will go to controller
 
             }catch(err){
                 res.status(401).json({
