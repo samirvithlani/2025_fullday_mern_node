@@ -35,6 +35,9 @@ const userModel = new Schema({
     roleId:{
         type:mongoose.Schema.ObjectId,
         ref:"role"
+    },
+    refreshToken:{
+        type:String
     }
 })
 

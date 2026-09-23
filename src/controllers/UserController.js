@@ -102,7 +102,11 @@ const createUser = async (req, res) => {
 
     const hashedPassword = bcrypt.hashSync(req.body.password,10)
 
+
     const savedUser = await userModel.insertOne({...req.body,profilepicUrl:u[0].path,ProfileThumb:u,password:hashedPassword});
+    const token = jwt.sign({id:savedUser._id},secret,{expiresIn:'6m'})
+    await  userModel.findByIdAndUpdate(savedUser._id,{refreshToken:token})
+  
     
     //await mailSend(req.body.email, "Testing royal", "hi someone from me");
     res.json({
