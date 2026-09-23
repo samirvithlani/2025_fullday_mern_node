@@ -178,7 +178,7 @@ const loginUser = async(req,res)=>{
 
           //token generation..
           //const token = jwt.sign(foundUserFromEmail.toObject(),secret)
-          const token = jwt.sign({id:foundUserFromEmail._id},secret,{expiresIn:60})
+          const token = jwt.sign({id:foundUserFromEmail._id},secret,{expiresIn:60*10})
 
 
             res.status(200).json({

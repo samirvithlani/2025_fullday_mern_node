@@ -31,6 +31,10 @@ const userModel = new Schema({
     },
     profilepicUrl:{
         type:String
+    },
+    roleId:{
+        type:mongoose.Schema.ObjectId,
+        ref:"role"
     }
 })
 

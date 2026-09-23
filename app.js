@@ -25,6 +25,9 @@ const productRoutes = require("./src/routes/ProductRoutes")
 app.use("/product",productRoutes)
 
 
+const roleRoutes = require("./src/routes/RoleRoutes")
+app.use("/role",roleRoutes)
+
 //const PORT = 3000
 const PORT = process.env.PORT || 3000
 //server creation

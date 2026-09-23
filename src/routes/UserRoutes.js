@@ -11,7 +11,8 @@ const authMiddleware = require("../middlewares/AuthMiddleware")
 // })
 
 //loclhost:3000/users
-router.get("/users",authMiddleware,userController.getAllUsers)
+//router.get("/users",authMiddleware("MANAGER"),userController.getAllUsers)
+router.get("/users",authMiddleware(["MANAGER","ADMIN"]),userController.getAllUsers)
 router.get("/user/:id",userController.getUserById)
 router.get("/searchuser",userController.searchUser)
 router.delete("/user/:id",userController.deleteUser)
