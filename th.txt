@@ -333,6 +333,22 @@ short lived token : access token : 2
 
 
 
+1st change:
+login: accesstoken,refreshtoken
+
+
+userController:
+
+getaccesstoken:
+POST: req.body.token[refreshtoken]
+
+req.body.token ---> db?? get
+
+user = userModel.findOne({refreshtoken:req.body.token})
+user._id --> jwt.sing() -->token..
+
+
+
 
 
 

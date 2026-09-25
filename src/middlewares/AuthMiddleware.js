@@ -79,7 +79,7 @@ const authMiddleware =(roles)=>async(req,res,next)=>{
                 console.log("decoded object ",decoded)
                 const verifiedUser = await userModel.findById(decoded.id).populate("roleId")
                 console.log(verifiedUser)
-
+                
                 //includes
                 if(verifiedUser && verifiedUser.roleId.name ==role){
                     next()

@@ -187,7 +187,8 @@ const loginUser = async(req,res)=>{
 
             res.status(200).json({
               message:"user login success",
-              data:token
+              data:token,
+              refreshtoken :foundUserFromEmail.refreshToken
             })
         }
         else{
