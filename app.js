@@ -1,36 +1,36 @@
-const express = require("express") //express module name
+const express = require("express"); //express module name
 //create an object of express
-const app = express()
-require("dotenv").config()
-const getDBConnection =  require("./src/utils/DBConnection")
-getDBConnection()
+const app = express();
+const Redis = require("ioredis");
+require("dotenv").config();
+const getDBConnection = require("./src/utils/DBConnection");
+getDBConnection();
 
 //glob middleware
-app.use(express.json()) //--> () ==> dont forget
+app.use(express.json()); //--> () ==> dont forget
 
-
-
-
+const redisConnection = new Redis(
+  "redis://default:6tbWZktiC5gQFbTQkeuFPxnrfacdZ2Ti@pencil-milk-pipe-29456.db.redis.io:13643",
+);
 
 //require
 
 //localhost:3000/user/users
-const userRoutes = require("./src/routes/UserRoutes")
-app.use("/user",userRoutes)
+const userRoutes = require("./src/routes/UserRoutes");
+app.use("/user", userRoutes);
 
-const categoryRoutes = require("./src/routes/CategoryRoutes")
-app.use("/category",categoryRoutes)
+const categoryRoutes = require("./src/routes/CategoryRoutes");
+app.use("/category", categoryRoutes);
 
-const productRoutes = require("./src/routes/ProductRoutes")
-app.use("/product",productRoutes)
+const productRoutes = require("./src/routes/ProductRoutes");
+app.use("/product", productRoutes);
 
-
-const roleRoutes = require("./src/routes/RoleRoutes")
-app.use("/role",roleRoutes)
+const roleRoutes = require("./src/routes/RoleRoutes");
+app.use("/role", roleRoutes);
 
 //const PORT = 3000
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 3000;
 //server creation
-app.listen(PORT,()=>{
-    console.log(`server started on port ${PORT}`)
-})
+app.listen(PORT, () => {
+  console.log(`server started on port ${PORT}`);
+});

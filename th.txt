@@ -349,6 +349,20 @@ user._id --> jwt.sing() -->token..
 
 
 
+redis:
+broker service:
+
+server heavy task: time
+
+userReg: -->email
+
+redis:
+queue:
+
+
+npm i ioredis
+npm i bullmq
+
 
 
 
