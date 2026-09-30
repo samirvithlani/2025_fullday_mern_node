@@ -363,8 +363,27 @@ queue:
 npm i ioredis
 npm i bullmq
 
+<-------------------->
+send otp:
+veify otp:
+
+sendotp:
+    req.body email
+    6 digit random otp:
+    await redis.set('otp:${req.body.email}',otp)
+    mailsend(req.body.email,"otp",otp)
 
 
+key                   VALUE
+otp:raj@gmail.com     123456
+
+
+verifyotp:POST
+    req.body.email : raj@gmail.com
+    req.body.otp   : 123456
+
+    const savedotp = await redis.get(`otp:${req.body.email}`)
+    success.response..
 
 
 

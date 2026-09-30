@@ -1,5 +1,6 @@
-const mailer = require("nodemailer")
-require("dotenv").config()
+const path = require("path");
+const mailer = require("nodemailer");
+require("dotenv").config({ path: path.resolve(__dirname, "../../.env") });
 
 const mailSend  = async(to,subject,text)=>{
 
@@ -17,9 +18,9 @@ const mailSend  = async(to,subject,text)=>{
         text:text
     }
 
-    const mailresponse = await transport.sendMail(mailOptions)
-    console.log(mailresponse)
-
+    const mailresponse = await transport.sendMail(mailOptions);
+    console.log(mailresponse);
+    return mailresponse;
 }
 //mailSend("samir.vithlani83955@gmail.com","test mail","welcome...")
 module.exports = mailSend
