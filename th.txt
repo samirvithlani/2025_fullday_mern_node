@@ -421,10 +421,36 @@ CORS :
 
 npm i cors
 
+----------->
+
+fe: --> forgotpassword click --> please enter email ---> link
+
+link -->click -->form -->password reset
+
+
+resetpassword post:
+http://localhost:3000/user/resetpassword?token=token
+req.body: password:
+
+loginc:
+const token = req.query.token
+const decod = token.verify
+{id:"ajhsahsausskjsa"}
+
+password hash
+findByIdAndUpdate(id,{$set:{password:hashedpassowrd}})
 
 
 
 
 
 
+forgotpassword : post api:
+req.body email: db check if email is present
+url generate:
 
+mAIL ; http://localhost:3000/user/resetpassword
+if email is present: user._id token
+
+after token genration:
+create url:http://localhost:3000/user/resetpassword?token=token
