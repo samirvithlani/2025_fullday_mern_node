@@ -1,6 +1,8 @@
 const express = require("express"); //express module name
 //create an object of express
 const app = express();
+const cors = require("cors")
+app.use(cors())
 const Redis = require("ioredis");
 const {Queue} = require("bullmq")
 require("dotenv").config();

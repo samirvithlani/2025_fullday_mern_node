@@ -398,6 +398,31 @@ req.body.newPassword
     res.json(""password reset success)
 
 
+<---->
+react project --> vs code
+    npm run dev
+
+DemoAPiCall.jsx  -->rafc
+ ->appRouter --> routing..
+
+function(){
+    axios --> http://localhost:3000/product
+    const res = axios.get("http://localhost:3000/product")
+}
+ 
+
+
+node      ===> vs code
+  nodemon app.js
+
+
+error:  
+CORS :
+
+npm i cors
+
+
+
 
 
 
