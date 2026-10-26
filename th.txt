@@ -454,3 +454,46 @@ if email is present: user._id token
 
 after token genration:
 create url:http://localhost:3000/user/resetpassword?token=token
+
+
+cron jobs:
+backend workers:
+
+whatsapp backup:
+
+* * * * * : every min
+*/5 * * * *
+
+0 * * * *
+0 9 * * *
+0 12 31 12 *
+0 10 * * 1
+30 12 14 2 *
+
+0 8 15 1 *
+
+
+
+model:{
+
+    token:{
+        type:string
+    },
+    status:{
+        type:string,
+        enum:["sent","pending"],
+        default:"pending"
+    }
+
+}
+
+'
+every 30 second recorf trancation:
+every 5 min dupdate status to sent
+
+
+
+
+
+
+
